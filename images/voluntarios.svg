@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+  <title id="title">Voluntários trabalhando juntos</title>
+  <desc id="desc">Ilustração com três pessoas colaborando em uma atividade social.</desc>
+  <rect width="600" height="420" rx="28" fill="#dff6ff"/>
+  <circle cx="160" cy="150" r="58" fill="#f2c6a0"/>
+  <circle cx="300" cy="130" r="62" fill="#d8a27f"/>
+  <circle cx="450" cy="150" r="58" fill="#b97952"/>
+  <path d="M85 320c15-80 50-110 115-110s100 30 115 110" fill="#0b4f6c"/>
+  <path d="M210 320c15-95 55-125 120-125s105 30 120 125" fill="#01baef"/>
+  <path d="M360 320c15-80 50-110 115-110s100 30 115 110" fill="#20bf55"/>
+  <path d="M218 215l-54 55m116-55l50 55m136-55l50 55" stroke="#123" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="160" cy="150" r="10" fill="#123"/>
+  <circle cx="140" cy="150" r="10" fill="#123"/>
+  <circle cx="300" cy="130" r="10" fill="#123"/>
+  <circle cx="280" cy="130" r="10" fill="#123"/>
+  <circle cx="450" cy="150" r="10" fill="#123"/>
+  <circle cx="430" cy="150" r="10" fill="#123"/>
+</svg>
