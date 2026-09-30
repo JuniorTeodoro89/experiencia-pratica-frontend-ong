@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cadastre-se para atuar como voluntário na ONG Esperança.">
+  <title>ONG Esperança | Cadastro de voluntário</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">ONG Esperança</a>
+      <nav aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos sociais</a></li>
+          <li><a href="cadastro.html" aria-current="page">Seja voluntário</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section" aria-labelledby="titulo-cadastro">
+      <p class="eyebrow">Participe</p>
+      <h1 id="titulo-cadastro">Cadastro de voluntário</h1>
+      <p class="lead">Preencha os dados abaixo para demonstrar seu interesse em colaborar com a ONG.</p>
+    </section>
+
+    <form class="form" action="#" method="post">
+      <fieldset>
+        <legend>Dados pessoais</legend>
+
+        <label for="nome">Nome completo</label>
+        <input id="nome" name="nome" type="text" autocomplete="name" required>
+
+        <label for="cpf">CPF</label>
+        <input id="cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off"
+          pattern="[0-9]{11}" maxlength="11" minlength="11"
+          title="Digite o CPF com 11 números, sem pontos ou traços." required>
+
+        <label for="nascimento">Data de nascimento</label>
+        <input id="nascimento" name="nascimento" type="date" autocomplete="bday" required>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contato</legend>
+
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="telefone">Telefone</label>
+        <input id="telefone" name="telefone" type="tel" inputmode="numeric"
+          autocomplete="tel" pattern="[0-9]{10,11}" maxlength="11"
+          title="Digite o telefone com 10 ou 11 números." required>
+      </fieldset>
+
+      <fieldset>
+        <legend>Endereço</legend>
+
+        <label for="cep">CEP</label>
+        <input id="cep" name="cep" type="text" inputmode="numeric"
+          autocomplete="postal-code" pattern="[0-9]{8}" maxlength="8" minlength="8"
+          title="Digite o CEP com 8 números, sem hífen." required>
+
+        <label for="cidade">Cidade</label>
+        <input id="cidade" name="cidade" type="text" autocomplete="address-level2" required>
+
+        <label for="estado">Estado</label>
+        <input id="estado" name="estado" type="text" autocomplete="address-level1" maxlength="2" required>
+      </fieldset>
+
+      <button class="button" type="submit">Enviar cadastro</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 ONG Esperança. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
