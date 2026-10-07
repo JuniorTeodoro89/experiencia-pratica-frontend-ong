@@ -10,9 +10,22 @@
 <body>
   <header class="site-header"><div class="container">
     <a class="brand" href="index.html">ONG Esperança</a>
-    <nav aria-label="Navegação principal"><ul class="nav-list">
-      <li><a href="index.html">Início</a></li><li><a href="projetos.html" aria-current="page">Projetos sociais</a></li><li><a href="cadastro.html">Seja voluntário</a></li>
-    </ul></nav>
+    <input class="menu-toggle" type="checkbox" id="menu-toggle">
+    <label class="menu-button" for="menu-toggle" aria-label="Abrir ou fechar menu">☰</label>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <ul class="nav-list">
+        <li><a href="index.html">Início</a></li>
+        <li class="has-dropdown">
+          <a href="projetos.html" aria-current="page">Projetos sociais</a>
+          <ul class="dropdown">
+            <li><a href="#projetos-atuacao">Frentes de atuação</a></li>
+            <li><a href="#campanhas">Campanhas de doação</a></li>
+            <li><a href="#voluntariado">Como ser voluntário</a></li>
+          </ul>
+        </li>
+        <li><a href="cadastro.html">Seja voluntário</a></li>
+      </ul>
+    </nav>
   </div></header>
   <main class="container">
     <section class="section" aria-labelledby="titulo-projetos"><p class="eyebrow">Nosso impacto</p><h1 id="titulo-projetos">Projetos sociais</h1><p class="lead">Conheça algumas das frentes de atuação da ONG e descubra como participar.</p></section>
