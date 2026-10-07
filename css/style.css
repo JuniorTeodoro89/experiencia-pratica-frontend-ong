@@ -51,7 +51,7 @@ body {
 a { color: var(--color-primary); }
 
 .container {
-  width: min(1100px, 92%);
+  width: min(1200px, 92%);
   margin-inline: auto;
 }
 
@@ -91,15 +91,25 @@ a { color: var(--color-primary); }
   font-weight: 700;
 }
 
-.hero {
+/* CSS Grid macro: sistema principal de 12 colunas */
+.hero,
+.cards {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.hero {
   gap: var(--space-7);
   align-items: center;
   padding-block: var(--space-8);
 }
 
-.hero img {
+.hero > div {
+  grid-column: span 7;
+}
+
+.hero > img {
+  grid-column: span 5;
   width: 100%;
   max-width: 420px;
   justify-self: end;
@@ -161,9 +171,11 @@ h3 { font-size: var(--font-lg); }
 }
 
 .cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
+}
+
+.card {
+  grid-column: span 4;
 }
 
 .card,
@@ -238,24 +250,87 @@ input:focus {
   padding-block: var(--space-5);
 }
 
-@media (max-width: 760px) {
-  .site-header .container,
-  .nav-list {
+/* Breakpoint 1: telas grandes */
+@media (max-width: 1200px) {
+  .hero { gap: var(--space-6); }
+  .hero > div { grid-column: span 7; }
+  .hero > img { grid-column: span 5; }
+}
+
+/* Breakpoint 2: notebooks e tablets em paisagem */
+@media (max-width: 992px) {
+  .hero > div { grid-column: span 8; }
+  .hero > img { grid-column: span 4; }
+  .card { grid-column: span 6; }
+}
+
+/* Breakpoint 3: tablets */
+@media (max-width: 768px) {
+  .site-header .container {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .site-header .container {
     padding-block: var(--space-3);
   }
 
-  .hero,
-  .cards {
-    grid-template-columns: 1fr;
+  .hero > div,
+  .hero > img {
+    grid-column: 1 / -1;
   }
 
-  .hero img {
+  .hero > img {
     justify-self: start;
-    max-width: 360px;
+    max-width: 520px;
+  }
+
+  .card { grid-column: span 12; }
+}
+
+/* Breakpoint 4: celulares */
+@media (max-width: 576px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .hero {
+    gap: var(--space-5);
+    padding-block: var(--space-6);
+  }
+
+  .section { padding-block: var(--space-5); }
+
+  .form { padding: var(--space-4); }
+
+  h1 { font-size: clamp(2rem, 10vw, 3rem); }
+
+  .lead { font-size: var(--font-md); }
+}
+
+/* Breakpoint 5: celulares pequenos */
+@media (max-width: 400px) {
+  .container { width: min(100% - 24px, 1200px); }
+
+  .hero {
+    padding-block: var(--space-5);
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    text-align: center;
+  }
+
+  .card,
+  .project,
+  .form {
+    padding: var(--space-4);
+  }
+
+  .site-footer {
+    font-size: var(--font-sm);
   }
 }
