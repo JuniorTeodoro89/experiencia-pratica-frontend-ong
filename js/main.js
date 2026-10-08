@@ -170,6 +170,38 @@ function renderCadastro() {
   `;
 }
 
+const STORAGE_KEY = "ongEsperanca.voluntario";
+
+function salvarDadosFormulario(form) {
+  const dadosFormulario = Object.fromEntries(
+    new FormData(form).entries()
+  );
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(dadosFormulario));
+}
+
+function restaurarDadosFormulario(form) {
+  const dadosSalvos = localStorage.getItem(STORAGE_KEY);
+
+  if (!dadosSalvos) return;
+
+  try {
+    const dadosFormulario = JSON.parse(dadosSalvos);
+
+    Object.entries(dadosFormulario).forEach(([campo, valor]) => {
+      const input = form.elements[campo];
+
+      if (input) {
+        input.value = valor;
+        showFieldFeedback(input);
+      }
+    });
+  } catch (error) {
+    localStorage.removeItem(STORAGE_KEY);
+    console.warn("Não foi possível recuperar os dados salvos.", error);
+  }
+}
+
 function getRoute() {
   return location.hash.replace("#", "") || "inicio";
 }
@@ -179,6 +211,12 @@ function renderRoute() {
   const renderer = routes[route] || routes.inicio;
 
   app.innerHTML = renderer();
+
+  const form = document.querySelector("#volunteer-form");
+
+  if (form) {
+    restaurarDadosFormulario(form);
+  }
 
   document.querySelectorAll("[data-route]").forEach(link => {
     link.setAttribute("aria-current", link.getAttribute("href") === `#${route}` ? "page" : "false");
@@ -238,6 +276,12 @@ document.addEventListener("input", event => {
   if (!field) return;
 
   showFieldFeedback(field);
+
+  const form = field.form;
+
+  if (form) {
+    salvarDadosFormulario(form);
+  }
 });
 
 document.addEventListener("blur", event => {
