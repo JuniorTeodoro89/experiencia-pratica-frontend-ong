@@ -180,27 +180,56 @@ function renderRoute() {
 
   app.innerHTML = renderer();
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
   document.querySelectorAll("[data-route]").forEach(link => {
-    link.addEventListener("click", () => {
-      document.querySelector("#menu-toggle").checked = false;
-    });
+    link.setAttribute("aria-current", link.getAttribute("href") === `#${route}` ? "page" : "false");
   });
 
-  const form = document.querySelector("#volunteer-form");
-
-  if (form) {
-    form.addEventListener("submit", event => {
-      event.preventDefault();
-
-      const feedback = document.querySelector("#form-feedback");
-      feedback.hidden = false;
-      feedback.className = "alert alert-success";
-      feedback.textContent = "Cadastro validado localmente com sucesso!";
-    });
-  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+document.addEventListener("click", event => {
+  const routeLink = event.target.closest("[data-route]");
+
+  if (routeLink) {
+    const menuToggle = document.querySelector("#menu-toggle");
+
+    if (menuToggle) {
+      menuToggle.checked = false;
+    }
+  }
+});
+
+document.addEventListener("input", event => {
+  const field = event.target.closest("#volunteer-form input");
+
+  if (!field) return;
+
+  field.classList.toggle("is-valid", field.checkValidity());
+  field.classList.toggle("is-invalid", !field.checkValidity());
+});
+
+document.addEventListener("submit", event => {
+  const form = event.target.closest("#volunteer-form");
+
+  if (!form) return;
+
+  event.preventDefault();
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+
+    const feedback = document.querySelector("#form-feedback");
+    feedback.hidden = false;
+    feedback.className = "alert alert-warning";
+    feedback.textContent = "Revise os campos destacados antes de enviar.";
+    return;
+  }
+
+  const feedback = document.querySelector("#form-feedback");
+  feedback.hidden = false;
+  feedback.className = "alert alert-success";
+  feedback.textContent = "Cadastro validado localmente com sucesso!";
+});
 
 window.addEventListener("hashchange", renderRoute);
 document.addEventListener("DOMContentLoaded", renderRoute);
