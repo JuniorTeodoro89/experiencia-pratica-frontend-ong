@@ -71,3 +71,9 @@ input:focus:valid{outline-color:rgba(22,128,60,.2)}
 .toast{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);background:var(--color-dark);color:var(--color-white);padding:var(--space-4);border-radius:var(--radius-md);box-shadow:0 8px 24px rgba(18,51,68,.18)}
 .toast strong{color:#9ff0b4}
 @media (max-width:576px){.toast{align-items:flex-start;flex-direction:column}}
+
+.field-feedback{display:block;min-height:1.25rem;margin-top:4px;font-size:var(--font-sm);font-weight:600}
+input.is-valid{border-color:var(--color-success);background:rgba(22,128,60,.04)}
+input.is-invalid{border-color:var(--color-error);background:rgba(180,35,24,.04);box-shadow:0 0 0 2px rgba(180,35,24,.08)}
+input.is-valid + .field-feedback{color:var(--color-success)}
+input.is-invalid + .field-feedback{color:var(--color-error)}
