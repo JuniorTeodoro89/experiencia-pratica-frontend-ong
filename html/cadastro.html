@@ -35,7 +35,7 @@
       <h1 id="titulo-cadastro">Cadastro de voluntário</h1>
       <p class="lead">Preencha os dados abaixo para demonstrar seu interesse em colaborar com a ONG.</p>
     </section>
-    <form class="form" action="#" method="post">
+    <form class="form" id="volunteer-form" action="#" method="post">
       <fieldset>
         <legend>Dados pessoais</legend>
         <label for="nome">Nome completo</label>
@@ -62,6 +62,7 @@
         <input id="estado" name="estado" type="text" autocomplete="address-level1" maxlength="2" required>
       </fieldset>
       <button class="button" type="submit">Enviar cadastro</button>
+      <p id="form-feedback" class="alert alert-info" role="status" aria-live="polite" hidden>Preencha os campos obrigatórios para continuar.</p>
     </form>
     <section class="section feedback-demo" aria-labelledby="feedback-titulo">
       <div class="feedback-card">
@@ -88,6 +89,6 @@
     </section>
   </main>
   <footer class="site-footer"><div class="container"><p>&copy; 2026 ONG Esperança. Todos os direitos reservados.</p></div></footer>
-  <script src="../js/main.js"></script>
+  <script type="module" src="../js/main.js"></script>
 </body>
 </html>
